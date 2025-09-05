@@ -1,0 +1,24 @@
+# Node
+node_modules/
+dist/
+
+# Angular build
+Frontend-angular/intelliinspect-frontend/.angular/
+Frontend-angular/intelliinspect-frontend/.cache/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pkl
+
+# .NET
+bin/
+obj/
+
+# Logs
+*.log
+
+# OS junk
+Thumbs.db
+.DS_Store
