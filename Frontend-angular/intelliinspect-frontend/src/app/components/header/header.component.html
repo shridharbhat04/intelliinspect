@@ -1,0 +1,27 @@
+<!-- Banner Header -->
+<div class="banner">
+  <h1>MiniML - Predictive Quality Control</h1>
+  <img src="assets/LOGO.png" alt="logo" class="logo" />
+</div>
+<!-- Step Progress Tabs -->
+<div class="steps-container">
+  <div
+    *ngFor="let step of steps"
+    class="step-item"
+    [class.active]="step.number === currentStep"
+>
+    <div class="step-content">
+      <div class="circle">{{ step.number }}</div>
+      <div class="label">{{ step.title }}</div>
+    </div>
+  </div>
+</div>
+<!-- Active step description and pill badge -->
+<div class="active-step-footer">
+  <div class="active-step-text">
+    {{ activeStepTitle }}
+  </div>
+  <div class="step-pill">
+    Step {{ currentStep }} of 4
+  </div>
+</div>

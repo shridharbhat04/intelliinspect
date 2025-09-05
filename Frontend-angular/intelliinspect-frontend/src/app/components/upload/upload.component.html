@@ -1,0 +1,74 @@
+<!-- Upload card -->
+<div 
+  *ngIf="!metadata"
+  class="border-2 border-dashed border-gray-400 p-6 text-center rounded-lg">
+  <input type="file" id="fileInput" hidden (change)="onFileSelected($event)" accept=".csv"/>
+  <label for="fileInput" class="cursor-pointer flex flex-col items-center">
+    <span class="text-5xl">📄</span>
+    <span class="mt-2 text-gray-600">Click to select a CSV file or drag and drop</span>
+  </label>
+  </div>
+  <!-- <button 
+    class="mt-4 px-4 py-2 bg-blue-600 text-white rounded disabled:opacity-50"
+    (click)="onUpload()"
+    [disabled]="!selectedFile">
+    Upload
+  </button> -->
+
+<!-- Metadata summary (after upload) -->
+<div *ngIf="metadata" class="mt-6">
+  <div class="feature-cards flex gap-4 flex-wrap">
+    <div class="card p-4 bg-white border rounded shadow w-48">
+      <p class="font-bold mb-2">File</p>
+      <p>{{ metadata.fileName }}</p>
+    </div>
+
+    <div class="card p-4 bg-white border rounded shadow w-48">
+      <p class="font-bold mb-2">Total Records</p>
+      <p>{{ metadata.totalRecords }}</p>
+    </div>
+
+    <div class="card p-4 bg-white border rounded shadow w-48">
+      <p class="font-bold mb-2">Total Columns</p>
+      <p>{{ metadata.totalColumns }}</p>
+    </div>
+
+    <div class="card p-4 bg-white border rounded shadow w-48">
+      <p class="font-bold mb-2">Pass Rate</p>
+      <p>{{ metadata.passRate }}</p>
+    </div>
+
+    <div class="card p-4 bg-white border rounded shadow w-48">
+      <p class="font-bold mb-2">Date Range</p>
+      <p>{{ metadata.earliestTimestamp }} → {{ metadata.latestTimestamp }}</p>
+    </div>
+  </div>
+
+   <!-- Buttons container -->
+    <!-- <div class="button-wrapper mt-6 flex justify-end gap-4">
+  <button 
+    class="btn-pill"
+    (click)="onReset()">
+    Reset
+  </button>
+
+  <button 
+    class="btn-pill">
+    Next
+  </button>
+</div> -->
+
+<div class="active-step-footer mt-6 flex gap-4">
+  <button 
+    class="step-pill"
+    (click)="onReset()">
+    Reset
+  </button>
+  <button 
+    class="step-pill">
+    Next
+  </button>
+</div>
+
+
+</div>

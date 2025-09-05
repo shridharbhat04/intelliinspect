@@ -1,0 +1,166 @@
+.border-dashed {
+  border-style: dashed;
+}
+
+.text-5xl {
+  font-size: 3rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.p-6 {
+  padding: 1.5rem;
+}
+
+.text-gray-400 {
+  color: #9ca3af;
+}
+
+.text-gray-600 {
+  color: #4b5563;
+}
+
+.text-blue-600 {
+  color: #2563eb;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.bg-blue-600 {
+  background-color: #2563eb;
+}
+
+.bg-green-600 {
+  background-color: #16a34a;
+}
+
+.text-white {
+  color: white;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.border {
+  border: 1px solid #ccc;
+}
+
+.rounded {
+  border-radius: 0.5rem;
+}
+
+.shadow {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.disabled\:opacity-50:disabled {
+  opacity: 0.5;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.pb-2 {
+  padding-bottom: 0.5rem;
+}
+
+.feature-cards {
+  // Allows cards to wrap on smaller screens
+  flex-wrap: wrap;
+}
+
+.card {
+  min-width: 12rem; // at least 192px wide
+  flex-grow: 1;
+  // You can customize shadows, padding, borders here if you want
+}
+.button-wrapper {
+  padding: 10px 15px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+}
+.btn-pill {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  padding: 10px 15px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  background-color: #3b82f6; /* blue */
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 6px 16px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-pill:hover {
+  background-color: #2563eb; /* a slightly darker blue on hover */
+}
+
+.active-step-footer {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  padding: 10px 15px;
+  margin-top: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.step-pill {
+  background-color: #3b82f6; // blue
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
