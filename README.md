@@ -13,8 +13,6 @@ intelliinspect/
 │── docker-compose.yaml (Service orchestration)
 │── README.md (Documentation)
 
-
-
 ---
 
 ## 🚀 Tech Stack
@@ -31,16 +29,21 @@ intelliinspect/
 ```bash
 git clone https://github.com/shridharbhat04/intelliinspect.git
 cd intelliinspect
+```
 
 2. Prerequisites
+
 Make sure you have installed:
+
 Docker Desktop
+
 Git
 
 3. Run the Project with Docker Compose
 docker-compose up --build
 
 4. Access Services
+
 Frontend (Angular) → http://localhost:4200
 
 Backend (Swagger UI) → http://localhost:5000/swagger
@@ -61,20 +64,23 @@ cd ml-service-python
 uvicorn main:app --reload --port 8000
 
 ✅ Current Status
- Docker Compose setup for all services
- Frontend builds successfully with Angular
- Backend runs with Swagger UI
- ML service (FastAPI) running with docs
- Repository cleaned with .gitignore
- ML model integration (XGBoost/LightGBM)
- Backend ↔ ML service integration
- Real dataset ingestion & streaming simulation
+
+✅ Docker Compose setup for all services
+
+✅ Frontend builds successfully with Angular
+
+✅ Backend runs with Swagger UI
+
+✅ ML service (FastAPI) running with docs
+
+✅ Repository cleaned with .gitignore
 
 📌 Next Steps
-Integrate ML models for predictive inspection
-Connect backend with ML service for inference
-Add synthetic timestamp augmentation for dataset
-Enable real-time streaming loop
 
+🔹 Integrate ML models for predictive inspection
 
+🔹 Connect backend with ML service for inference
 
+🔹 Add synthetic timestamp augmentation for dataset
+
+🔹 Enable real-time streaming loop
