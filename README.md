@@ -45,9 +45,9 @@ docker-compose up --build
 ```
 
 4. Access Services
-Frontend (Angular) → http://localhost:4200
-Backend (Swagger UI) → http://localhost:5000/swagger
-ML Service (FastAPI Docs) → http://localhost:8000/docs
+- Frontend (Angular) → http://localhost:4200
+- Backend (Swagger UI) → http://localhost:5000/swagger
+- ML Service (FastAPI Docs) → http://localhost:8000/docs
 
 
 
