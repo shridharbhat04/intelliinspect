@@ -34,9 +34,7 @@ cd intelliinspect
 2. Prerequisites
 
 Make sure you have installed:
-
 Docker Desktop
-
 Git
 
 3. Run the Project with Docker Compose
