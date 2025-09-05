@@ -40,15 +40,16 @@ Docker Desktop
 Git
 
 3. Run the Project with Docker Compose
+```bash
 docker-compose up --build
+```
 
 4. Access Services
-
 Frontend (Angular) → http://localhost:4200
-
 Backend (Swagger UI) → http://localhost:5000/swagger
-
 ML Service (FastAPI Docs) → http://localhost:8000/docs
+
+
 
 👨‍💻 Development Notes
 Run Only Frontend (Angular)
@@ -63,24 +64,15 @@ Run Only ML Service (FastAPI)
 cd ml-service-python
 uvicorn main:app --reload --port 8000
 
-✅ Current Status
-
+Current Status
 ✅ Docker Compose setup for all services
-
 ✅ Frontend builds successfully with Angular
-
 ✅ Backend runs with Swagger UI
-
 ✅ ML service (FastAPI) running with docs
-
 ✅ Repository cleaned with .gitignore
 
 📌 Next Steps
-
 🔹 Integrate ML models for predictive inspection
-
 🔹 Connect backend with ML service for inference
-
 🔹 Add synthetic timestamp augmentation for dataset
-
 🔹 Enable real-time streaming loop
