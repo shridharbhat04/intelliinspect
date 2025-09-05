@@ -7,11 +7,11 @@ The system is containerized with Docker Compose for seamless development and dep
 
 ## 📂 Project Structure
 intelliinspect/
-│── frontend-angular/ (Angular app - UI)
-│── backend-dotnet/ (ASP.NET Core Web API)
-│── ml-service-python/ (FastAPI ML service)
-│── docker-compose.yaml (Service orchestration)
-│── README.md (Documentation)
+- │── frontend-angular/ (Angular app - UI)
+- │── backend-dotnet/ (ASP.NET Core Web API)
+- │── ml-service-python/ (FastAPI ML service)
+- │── docker-compose.yaml (Service orchestration)
+- │── README.md (Documentation)
 
 ---
 
