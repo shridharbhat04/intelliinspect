@@ -1,0 +1,6 @@
+@IntelliInspectBackend_HostAddress = http://localhost:5293
+
+GET {{IntelliInspectBackend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
