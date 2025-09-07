@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UploadService } from '../../services/upload.service';
+import { Router } from '@angular/router';
+import { DatasetService } from '../../services/dataset.service';
 
 @Component({
   selector: 'app-upload',
@@ -13,7 +15,8 @@ export class UploadComponent {
   selectedFile: File | null = null;
   metadata: any;
 
-  constructor(private uploadService: UploadService) {}
+  constructor(private uploadService: UploadService, private router: Router, private datasetService: DatasetService) {}
+
 
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -26,7 +29,7 @@ export class UploadComponent {
   onUpload(): void {
     if (!this.selectedFile) return;
     this.uploadService.uploadDataset(this.selectedFile).subscribe({
-      next: (res) => this.metadata = res,
+      next: (res) => {this.metadata = res, this.datasetService.setMetadata(res)},
       error: (err) => alert('Upload failed: ' + err.message)
     });
   }
@@ -35,5 +38,8 @@ export class UploadComponent {
     this.metadata = null;
     this.selectedFile = null;
   }
+  goNext(): void {
+  this.router.navigate(['/date-ranges']);
+}
 
 }

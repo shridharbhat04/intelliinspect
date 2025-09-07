@@ -1,0 +1,91 @@
+<div class="p-6 bg-gray-50 rounded-md">
+  <div class="date-ranges-container">
+    <!-- Column 1: Training Period -->
+    <div class="date-range-box">
+      <strong>Training Period</strong>
+      <mat-form-field appearance="outline" class="w-full mt-2">
+        <mat-label>Start</mat-label>
+        <input matInput [matDatepicker]="trainStartPicker" [(ngModel)]="trainStart" />
+        <mat-datepicker-toggle matSuffix [for]="trainStartPicker"></mat-datepicker-toggle>
+        <mat-datepicker #trainStartPicker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-full mt-2">
+        <mat-label>End</mat-label>
+        <input matInput [matDatepicker]="trainEndPicker" [(ngModel)]="trainEnd" />
+        <mat-datepicker-toggle matSuffix [for]="trainEndPicker"></mat-datepicker-toggle>
+        <mat-datepicker #trainEndPicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <!-- Column 2: Testing Period -->
+    <div class="date-range-box">
+      <strong>Testing Period</strong>
+      <mat-form-field appearance="outline" class="w-full mt-2">
+        <mat-label>Start</mat-label>
+        <input matInput [matDatepicker]="testStartPicker" [(ngModel)]="testStart" />
+        <mat-datepicker-toggle matSuffix [for]="testStartPicker"></mat-datepicker-toggle>
+        <mat-datepicker #testStartPicker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-full mt-2">
+        <mat-label>End</mat-label>
+        <input matInput [matDatepicker]="testEndPicker" [(ngModel)]="testEnd" />
+        <mat-datepicker-toggle matSuffix [for]="testEndPicker"></mat-datepicker-toggle>
+        <mat-datepicker #testEndPicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <!-- Column 3: Simulation Period -->
+    <div class="date-range-box">
+      <strong>Simulation Period</strong>
+      <mat-form-field appearance="outline" class="w-full mt-2">
+        <mat-label>Start</mat-label>
+        <input matInput [matDatepicker]="simStartPicker" [(ngModel)]="simStart" />
+        <mat-datepicker-toggle matSuffix [for]="simStartPicker"></mat-datepicker-toggle>
+        <mat-datepicker #simStartPicker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-full mt-2">
+        <mat-label>End</mat-label>
+        <input matInput [matDatepicker]="simEndPicker" [(ngModel)]="simEnd" />
+        <mat-datepicker-toggle matSuffix [for]="simEndPicker"></mat-datepicker-toggle>
+        <mat-datepicker #simEndPicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <!-- Success box -->
+<div *ngIf="validationResult" class="mt-6 p-4 border rounded bg-green-50">
+  <h3 class="font-semibold text-green-700">✅ Validation Successful</h3>
+  <p>Status: {{ validationResult.status }}</p>
+  <p>Training Records: {{ validationResult.trainingRecords }}</p>
+  <p>Testing Records: {{ validationResult.testingRecords }}</p>
+  <p>Simulation Records: {{ validationResult.simulationRecords }}</p>
+</div>
+
+<!-- Error box -->
+<div *ngIf="errorMessage" class="mt-6 p-4 border rounded bg-red-50">
+  <h3 class="font-semibold text-red-700">❌ Validation Failed</h3>
+  <p>{{ errorMessage }}</p>
+</div>
+
+
+  <div class="mt-6 flex gap-4">
+    <button 
+      class="step-pill" 
+      (click)="goBack()">
+      ← Back
+    </button>
+    <button
+      class="step-pill bg-blue-600 text-white"
+      (click)="validateRanges()"
+      [disabled]="!trainStart || !trainEnd || !testStart || !testEnd || !simStart || !simEnd">
+      Validate Ranges
+    </button>
+    <button
+      class="step-pill bg-green-600 text-white"
+      (click)="goNext()"
+      [disabled]="!rangesValid">
+      Next
+    </button>
+
+  </div>
+</div>

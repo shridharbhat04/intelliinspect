@@ -21,4 +21,9 @@ export class UploadService {
     fd.append('file', file, file.name);
     return this.http.post<any>(this.apiUrl, fd);
   }
+
+  validateRanges(payload: any) {
+  return this.http.post<any>('http://localhost:5000/api/ranges/validate', payload);
+}
+
 }

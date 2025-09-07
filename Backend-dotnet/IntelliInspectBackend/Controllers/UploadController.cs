@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using CsvHelper;
 using System.Globalization;
+using IntelliInspectBackend.Services;
+
 
 namespace IntelliInspectBackend.Controllers
 {
@@ -54,7 +56,10 @@ namespace IntelliInspectBackend.Controllers
                 EarliestTimestamp = timestamps.First(),
                 LatestTimestamp = timestamps.Last()
             };
-
+            // Save dataset in memory for later
+            DatasetStore.Records = records
+                .Select(r => new Dictionary<string, object>(r, StringComparer.OrdinalIgnoreCase))
+                .ToList();
             return Ok(metadata);
         }
     }
