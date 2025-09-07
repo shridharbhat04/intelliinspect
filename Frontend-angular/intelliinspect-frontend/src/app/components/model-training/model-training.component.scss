@@ -1,0 +1,132 @@
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.training-box {
+  display: flex;
+   flex-direction: column; 
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  background-color: #f9fafb;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+  .trained-msg {
+    font-weight: 500;
+    color: #16a34a; // Tailwind green-600
+  }
+}
+
+.btn {
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background 0.2s ease-in-out;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.btn-primary {
+  background: #2563eb;
+  color: white;
+}
+
+.btn-success {
+  background: #10b981;
+  color: white;
+}
+
+.flex.justify-end {
+  justify-content: flex-end;
+}
+
+
+.feature-card {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  .card-title {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #374151;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #111827;
+  }
+}
+.chart-container {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  max-height: 250px;
+  overflow: hidden;
+
+  canvas {
+    max-height: 200px !important;
+  }
+}
+.scrollable-wrapper {
+  overflow-y: auto;
+  max-height: 100vh;
+  padding-bottom: 120px; // 👈 prevents the footer from covering content
+}
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.active-step-footer {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  padding: 10px 15px;
+  margin-top: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.step-pill {
+  background-color: #3b82f6; // blue
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 6px 16px;
+  // border-radius: 9999px;
+  white-space: nowrap;
+}
+.mt-6 {
+  margin-top: 1.5rem;
+}
+.gap-4 {
+  gap: 1rem;
+}
+.confusion-chart-container {
+  width: 400px;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  text-align: center;
+}

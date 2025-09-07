@@ -1,0 +1,73 @@
+<div class="p-6 bg-white rounded shadow scrollable-wrapper">
+  <!-- Training Controls -->
+  <div class="training-box">
+    <button
+      class="btn"
+      [ngClass]="{
+        'btn-primary': !modelTrained,
+        'btn-success': modelTrained
+      }"
+      (click)="startMockTraining()"
+      [disabled]="isTraining || modelTrained"
+    >
+      {{ modelTrained ? 'Trained' : 'Train Model' }}
+    </button>
+
+    <div *ngIf="modelTrained" class="trained-msg">
+      ✅ Model trained.
+    </div>
+  </div>
+
+  <div *ngIf="isTraining" class="mb-4">
+    <p>Training in progress... {{progress}}%</p>
+    <progress [value]="progress" max="100" style="width:100%"></progress>
+  </div>
+
+  <!-- Show training curve only after training completed -->
+  <div *ngIf="modelTrained && trainingCurve?.labels?.length" class="chart-container">
+    <canvas baseChart 
+      [data]="trainingCurve"
+      [options]="trainingOptions"
+      [type]="'line'">
+    </canvas>
+  </div>
+
+  <!-- Show metrics only after training completed -->
+  <div *ngIf="metrics" class="metrics-grid">
+    <div class="feature-card">
+      <h4 class="card-title">Accuracy</h4>
+      <p class="card-value">{{metrics.accuracy}}</p>
+    </div>
+    <div class="feature-card">
+      <h4 class="card-title">Precision</h4>
+      <p class="card-value">{{metrics.precision}}</p>
+    </div>
+    <div class="feature-card">
+      <h4 class="card-title">Recall</h4>
+      <p class="card-value">{{metrics.recall}}</p>
+    </div>
+    <div class="feature-card">
+      <h4 class="card-title">F1 Score</h4>
+      <p class="card-value">{{metrics.f1}}</p>
+    </div>
+  </div>
+
+  <!-- Show confusion matrix only after training completed -->
+  <div *ngIf="modelTrained" class="confusion-chart-container">
+    <h3 class="font-semibold mb-2">📊 Confusion Matrix</h3>
+    <canvas baseChart
+      [data]="confusionData"
+      [options]="confusionOptions"
+      [type]="'doughnut'">
+    </canvas>
+  </div>
+
+  <div class="active-step-footer mt-6 flex gap-4">
+    <button
+      class="step-pill"
+      (click)="proceedToSimulation()"
+      [disabled]="!metrics">
+      Next
+    </button>
+  </div>
+</div>
