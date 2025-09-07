@@ -1,4 +1,4 @@
-<div class="p-6 bg-gray-50 rounded-md">
+<div class="p-6 bg-gray-50 rounded-md scrollable-wrapper">
   <div class="date-ranges-container">
     <!-- Column 1: Training Period -->
     <div class="date-range-box">
@@ -52,40 +52,84 @@
     </div>
   </div>
 
-  <!-- Success box -->
-<div *ngIf="validationResult" class="mt-6 p-4 border rounded bg-green-50">
-  <h3 class="font-semibold text-green-700">✅ Validation Successful</h3>
-  <p>Status: {{ validationResult.status }}</p>
-  <p>Training Records: {{ validationResult.trainingRecords }}</p>
-  <p>Testing Records: {{ validationResult.testingRecords }}</p>
-  <p>Simulation Records: {{ validationResult.simulationRecords }}</p>
+<!-- Success -> Summary Cards -->
+<div *ngIf="validationResult" class="validation-summary content-block">
+  <h3 class="validation-title">✅ Validation Successful</h3>
+
+  <div class="summary-cards">
+    
+    <!-- Training Period -->
+    <div class="summary-card">
+      <h4 class="card-title">Training Period</h4>
+      <p class="card-line"><strong>{{ trainingSummary?.durationDays }}</strong> days</p>
+      <p class="card-line">
+        <strong>{{ trainingSummary?.start | date:'medium' }}</strong> → 
+        <strong>{{ trainingSummary?.end | date:'medium' }}</strong>
+      </p>
+      <p class="card-line">Records: <strong>{{ trainingSummary?.count }}</strong></p>
+    </div>
+
+    <!-- Testing Period -->
+    <div class="summary-card">
+      <h4 class="card-title">Testing Period</h4>
+      <p class="card-line"><strong>{{ testingSummary?.durationDays }}</strong> days</p>
+      <p class="card-line">
+        <strong>{{ testingSummary?.start | date:'medium' }}</strong> → 
+        <strong>{{ testingSummary?.end | date:'medium' }}</strong>
+      </p>
+      <p class="card-line">Records: <strong>{{ testingSummary?.count }}</strong></p>
+    </div>
+
+    <!-- Simulation Period -->
+    <div class="summary-card">
+      <h4 class="card-title">Simulation Period</h4>
+      <p class="card-line"><strong>{{ simulationSummary?.durationDays }}</strong> days</p>
+      <p class="card-line">
+        <strong>{{ simulationSummary?.start | date:'medium' }}</strong> → 
+        <strong>{{ simulationSummary?.end | date:'medium' }}</strong>
+      </p>
+      <p class="card-line">Records: <strong>{{ simulationSummary?.count }}</strong></p>
+    </div>
+
+  </div>
 </div>
 
-<!-- Error box -->
-<div *ngIf="errorMessage" class="mt-6 p-4 border rounded bg-red-50">
+<!-- Error box (unchanged) -->
+<div *ngIf="errorMessage" class="mt-6 p-4 content-block">
   <h3 class="font-semibold text-red-700">❌ Validation Failed</h3>
   <p>{{ errorMessage }}</p>
 </div>
 
+<!-- Timeline Bar Chart -->
+<div *ngIf="validationResult" class="mt-8">
+  <h3 class="font-semibold mb-2 content-block">📊 Timeline (Monthly Record Counts)</h3>
+  <div class="chart-container">
+    <canvas baseChart 
+      [data]="chartData"
+      [options]="chartOptions"
+      [type]="'bar'">
+    </canvas>
+  </div>
+</div>
 
-  <div class="mt-6 flex gap-4">
+
+  <div class="mt-6 flex gap-4 active-step-footer ">
     <button 
       class="step-pill" 
       (click)="goBack()">
-      ← Back
+      Back
     </button>
     <button
-      class="step-pill bg-blue-600 text-white"
+      class="step-pill"
       (click)="validateRanges()"
       [disabled]="!trainStart || !trainEnd || !testStart || !testEnd || !simStart || !simEnd">
       Validate Ranges
     </button>
     <button
-      class="step-pill bg-green-600 text-white"
+      class="step-pill"
       (click)="goNext()"
       [disabled]="!rangesValid">
       Next
     </button>
-
   </div>
 </div>
