@@ -1,0 +1,95 @@
+<div class="p-6 bg-white rounded shadow scrollable-wrapper">
+
+  <button class="btn btn-primary" (click)="runSimulation()" [disabled]="isRunning">
+    {{ resultsReady ? 'Restart Simulation' : 'Run Simulation' }}
+  </button>
+
+  <div *ngIf="isRunning" class="mt-4">
+    <p>Running simulation... {{progress}}%</p>
+    <progress [value]="progress" max="100" style="width:100%"></progress>
+  </div>
+
+  <div *ngIf="resultsReady" class="mt-6">
+    <p class="text-green-600 font-semibold mb-4">✅ Simulation Complete</p>
+
+    <!-- Predicted vs Actual Graph -->
+    <h3 class="font-semibold mb-2">📈 Quality Prediction Graph (Quality Score vs Time)</h3>
+    <div class="chart-container">
+      <canvas baseChart 
+        [data]="predictedVsActual"
+        [options]="predictedVsActualOptions"
+        [type]="'line'">
+      </canvas>
+    </div>
+
+    <!-- Prediction Confidence Donut -->
+    <h3 class="font-semibold mb-2 mt-6">📊 Prediction Confidence Distribution</h3>
+    <div class="chart-container">
+      <canvas baseChart
+        [data]="distribution"
+        [options]="distributionOptions"
+        [type]="'doughnut'">
+      </canvas>
+    </div>
+
+    <!-- Live Statistics -->
+    <h3 class="font-semibold mb-2 mt-6">📈 Live Statistics</h3>
+    <div class="metrics-grid">
+  <div class="feature-card">
+    <h4 class="card-title">Total Samples</h4>
+    <p class="card-value">{{ totalSamples }}</p>
+  </div>
+  <div class="feature-card">
+    <h4 class="card-title">Pass</h4>
+    <p class="card-value">{{ passCount }}</p>
+  </div>
+  <div class="feature-card">
+    <h4 class="card-title">Fail</h4>
+    <p class="card-value">{{ failCount }}</p>
+  </div>
+  <div class="feature-card">
+    <h4 class="card-title">Avg Confidence (%)</h4>
+    <p class="card-value">{{ averageConfidence }}</p>
+  </div>
+</div>
+
+
+    <!-- Live Prediction Stream Table -->
+    <div class="mt-6">
+      <h3 class="font-semibold mb-2">📋 Live Prediction Stream</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Sample ID</th>
+              <th>Prediction</th>
+              <th>Confidence (%)</th>
+              <th>Temperature (°C)</th>
+              <th>Pressure (hPa)</th>
+              <th>Humidity (%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of liveStream">
+              <td>{{ row.time }}</td>
+              <td>{{ row.sampleId }}</td>
+              <td [ngClass]="{'text-green-600': row.prediction === 'Pass', 'text-red-600': row.prediction === 'Fail'}">{{ row.prediction }}</td>
+              <td>{{ row.confidence }}</td>
+              <td>{{ row.temperature }}</td>
+              <td>{{ row.pressure }}</td>
+              <td>{{ row.humidity }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Finish Button -->
+    <div class="mt-6 flex gap-4 justify-end">
+      <button class="step-pill bg-green-600 text-white" (click)="finish()">
+        Finish
+      </button>
+    </div>
+  </div>
+</div>
